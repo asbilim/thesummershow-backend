@@ -23,14 +23,14 @@ class Discipline(models.Model):
 
 class Candidat(models.Model):
     name = models.CharField(max_length=200)
-    identifier = models.IntegerField(unique=True,null=True,blank=True)
+    identifier = models.CharField(unique=True,null=True,blank=True,max_length=255)
     discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to='candidates_photos/')
     slug = models.SlugField(max_length=250, unique=True, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.identifier = generate_random_string(20)
+            self.identifier = generate_random_string(32)
         if not self.slug:
             self.slug = slugify(f"{self.name}-{self.identifier}")
         super().save(*args, **kwargs)
