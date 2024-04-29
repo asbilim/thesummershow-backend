@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'drf_yasg',
     'django.contrib.staticfiles',
     'listings',
-    "rest_framework"
+    "rest_framework",
+    
 ]
 
 ADMIN_SITE_HEADER = "TheSummerShow"
