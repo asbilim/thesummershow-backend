@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -16,6 +17,17 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "TheSummerShow",
+
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "TheSummerShow",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "TheSummerShow",
+    
+}
 # Application definition
 
 INSTALLED_APPS = [
@@ -25,12 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'drf_yasg',
     'django.contrib.staticfiles',
     'listings',
-    "rest_framework"
+    "rest_framework",
+    
 ]
 
-ADMIN_SITE_HEADER = "VoteApp"
+ADMIN_SITE_HEADER = "TheSummerShow"
 
 
 MIDDLEWARE = [
@@ -92,6 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 
 # Internationalization
